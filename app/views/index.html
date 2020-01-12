@@ -1,0 +1,49 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 5px;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .crop {
+            height: 400px;
+            width: 300px;
+            overflow: hidden;
+        }
+        .crop img {
+            height: auto;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Skin care products</h2>
+
+<div class="row">
+    <div class="column" ng-repeat="product in products">
+        <img class="crop" src="data:image/jpeg;base64, {{product.image}}" style="width:100%">
+        <table align="center">
+            <tr><b>Name:</b> {{product.name}}</tr><br>
+            <tr><b>Brand:</b> {{product.brand}}</tr><br>
+            <tr><b>Description:</b> {{product.description}}</tr><br>
+            <tr><b>Price:</b> {{product.price}}</tr><br>
+        </table>
+    </div>
+</div>
+
+<div ng-if="products.length==0">
+    No record found !!
+</div>
+
+</body>
